@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Nullable>enable</Nullable>
+    <LangVersion>8.0</LangVersion>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>5.0</AnalysisLevel>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>0.1</Version>
+    <Title>PropertyChanged.Fody.Analyzer</Title>
+    <PackageId>PropertyChanged.Fody.Analyzer</PackageId>
+    <Authors>Guilherme Bufolo</Authors>
+    <Summary>A Visual Studo analyzer for PropertyChanged.Fody.</Summary>
+    <Description>A Visual Studo analyzer for PropertyChanged.Fody.</Description>
+    <License>https://licenses.nuget.org/GPL-3.0-or-later</License>
+    <PackageProjectUrl>https://github.com/RedX2501/PropertyChanged.Fody.Analyzer</PackageProjectUrl>
+    <PackageIcon>noun_analyzing_1018634.png</PackageIcon>
+    <RepositoryUrl>https://github.com/RedX2501/PropertyChanged.Fody.Analyzer</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Copyright>2020</Copyright>
+    <PackageTags>PropertyChanged.Fody.Analyzer, analyzers</PackageTags>
+    <NoPackageAnalysis>false</NoPackageAnalysis>
+    <NeutralLanguage></NeutralLanguage>
+    <UserSecretsId>aee55e05-0c21-42b8-a821-165fd22f7bf4</UserSecretsId>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <dependencies>
+      <group targetFramework="netstandard1.3" />
+    </dependencies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="2.6.2" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="2.10" PrivateAssets="all" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.66">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Update="NETStandard.Library" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="tools\*.ps1" CopyToOutputDirectory="Always" Pack="true" PackagePath="" />
+    <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    <None Include="$(MSBuildProjectDirectory)\..\..\resources\noun_analyzing_1018634.png" Pack="true" PackagePath="" />
+    <None Include="..\..\LICENSE.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+</Project>
